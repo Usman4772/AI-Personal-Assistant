@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import SmokyCursor from "@/components/SmookyCursor";
+import SplashCursor from "@/components/SplashCursor";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <SmokyCursor/>
+      <SplashCursor/>
         {children}
       </body>
     </html>
