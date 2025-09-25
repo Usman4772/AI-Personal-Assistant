@@ -1,7 +1,8 @@
 import HomePage from "@/components/HomePage";
+import HeroSection from "@/components/HeroSection";
 
 function Page() {
-  return <HomePage />;
+  return <HeroSection />;
 }
 
 export default Page;
