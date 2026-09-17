@@ -127,6 +127,11 @@ img {
   transform-origin: top center;
 }
 
+[data-product-line] {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up {
     animation: none;
@@ -142,5 +147,9 @@ img {
 
   [data-journey-line] {
     transform: scaleY(1) !important;
+  }
+
+  [data-product-line] {
+    transform: scaleX(1) !important;
   }
 }

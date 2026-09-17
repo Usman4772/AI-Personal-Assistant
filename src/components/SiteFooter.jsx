@@ -18,7 +18,7 @@ export function SiteFooter() {
                 <span className="font-display text-sm font-extrabold">{site.name}</span>
               </div>
               <p className="mt-4 mb-5 max-w-[300px] text-sm leading-relaxed text-on-surface-variant">
-                Full-stack systems, reliable APIs, and interfaces that hold up in production.
+                Full-stack software engineer — building, improving and fixing modern web applications.
               </p>
               <a
                 href={`mailto:${site.email}`}
@@ -36,11 +36,10 @@ export function SiteFooter() {
               </h5>
               <ul className="space-y-3">
                 {[
-                  ["#about", "About"],
-                  ["#projects", "Projects"],
-                  ["#skills", "Skills"],
-                  ["#experience", "Experience"],
-                  ["#process", "How I work"],
+                  ["#projects", "Work"],
+                  ["#services", "Services"],
+                  ["#process", "Process"],
+                  ["#why", "About"],
                   ["#contact", "Contact"],
                 ].map(([href, label]) => (
                   <li key={href}>
@@ -82,7 +81,7 @@ export function SiteFooter() {
               © {new Date().getFullYear()} {site.name}. All rights reserved.
             </p>
             <a href="#home" className="text-sm text-outline hover:text-primary">
-              Back to chat ↑
+              Back to top
             </a>
           </div>
         </Reveal>

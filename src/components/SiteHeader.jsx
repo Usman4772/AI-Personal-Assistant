@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Button } from "@/components/XoButton";
-import { navLinks, site } from "@/lib/content";
+import { navLinks } from "@/lib/content";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,19 @@ export function SiteHeader({ isChatting, onReset }) {
       );
     });
 
-    return () => ctx.revert();
+    const fallback = window.setTimeout(() => {
+      targets.forEach((el) => {
+        el.style.opacity = "1";
+      });
+    }, 1800);
+
+    return () => {
+      window.clearTimeout(fallback);
+      ctx.revert();
+      targets.forEach((el) => {
+        el.style.opacity = "1";
+      });
+    };
   }, []);
 
   if (isChatting) {
@@ -52,14 +64,11 @@ export function SiteHeader({ isChatting, onReset }) {
     <>
       <nav
         ref={desktopNavRef}
-        className="fixed top-6 left-1/2 z-50 hidden w-[calc(100%-40px)] max-w-[1280px] -translate-x-1/2 items-center justify-between rounded-xl border border-white/20 bg-surface/60 px-8 py-3 shadow-[0_8px_32px_0_rgba(0,82,255,0.08),0_0_20px_rgba(0,82,255,0.15)] backdrop-blur-xl lg:flex"
+        className="fixed top-6 left-0 right-0 z-50 mx-auto hidden w-[calc(100%-40px)] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center rounded-xl border border-white/20 bg-surface/60 px-8 py-3 shadow-[0_8px_32px_0_rgba(0,82,255,0.08),0_0_20px_rgba(0,82,255,0.15)] backdrop-blur-xl lg:grid"
       >
-        <a href="#home" className="inline-flex items-center gap-2.5" aria-label="Home">
+        <a href="#home" className="inline-flex items-center justify-self-start" aria-label="Home">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-white">
             U
-          </span>
-          <span className="font-display text-sm font-extrabold tracking-tight text-on-surface">
-            {site.name}
           </span>
         </a>
         <div className="flex items-center gap-7">
@@ -73,24 +82,25 @@ export function SiteHeader({ isChatting, onReset }) {
             </a>
           ))}
         </div>
-        <Button
-          href="#contact"
-          size="sm"
-          className="shadow-[0_0_15px_rgba(0,82,255,0.4)] hover:scale-105 hover:shadow-[0_0_25px_rgba(0,82,255,0.6)]"
-        >
-          Start a Project
-        </Button>
+        <div className="justify-self-end">
+          <Button
+            href="#contact"
+            size="sm"
+            className="shadow-[0_0_15px_rgba(0,82,255,0.4)] hover:scale-105 hover:shadow-[0_0_25px_rgba(0,82,255,0.6)]"
+          >
+            Start a Project
+          </Button>
+        </div>
       </nav>
 
       <header
         ref={mobileBarRef}
         className="sticky top-0 z-40 flex items-center justify-between border-b border-surface-dim bg-surface/80 px-5 py-4 backdrop-blur-md lg:hidden"
       >
-        <a href="#home" className="inline-flex items-center gap-2">
+        <a href="#home" className="inline-flex items-center" aria-label="Home">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink text-xs font-bold text-white">
             U
           </span>
-          <span className="text-sm font-extrabold text-on-surface">Usman</span>
         </a>
         <button
           type="button"

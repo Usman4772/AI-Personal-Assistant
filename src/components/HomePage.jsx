@@ -1,56 +1,58 @@
 "use client";
-import { useEffect } from "react";
-import Chat from "./Chat";
-import Footer from "./Footer";
-import { HeroClone } from "./HeroClone";
+// import { useEffect } from "react";
+// import Chat from "./Chat";
+// import Footer from "./Footer";
+import { Hero } from "./Hero";
 import PortfolioSections from "./PortfolioSections";
 import { SiteHeader } from "./SiteHeader";
 import { GsapRefresh } from "./GsapRefresh";
-import useConversation from "@/hooks/useConversation";
+// import useConversation from "@/hooks/useConversation";
 
 function HomePage() {
-  const { message, flags, query, setQuery, reset, loading, getAIResponse } =
-    useConversation();
-  const isChatting = Boolean(message?.message) || loading;
-
-  function startChat(nextQuery) {
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-    getAIResponse(nextQuery);
-  }
-
-  function handleReset() {
-    reset();
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-  }
-
-  useEffect(() => {
-    const html = document.documentElement;
-
-    if (isChatting) {
-      window.scrollTo(0, 0);
-      html.style.overflow = "hidden";
-      html.style.scrollBehavior = "auto";
-      document.body.style.overflow = "hidden";
-    } else {
-      html.style.overflow = "";
-      html.style.scrollBehavior = "";
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      html.style.overflow = "";
-      html.style.scrollBehavior = "";
-      document.body.style.overflow = "";
-    };
-  }, [isChatting]);
+  // AI conversation — temporarily disabled; restore this block later.
+  // const { message, flags, query, setQuery, reset, loading, getAIResponse } =
+  //   useConversation();
+  // const isChatting = Boolean(message?.message) || loading;
+  //
+  // function startChat(nextQuery) {
+  //   document.documentElement.style.scrollBehavior = "auto";
+  //   window.scrollTo(0, 0);
+  //   getAIResponse(nextQuery);
+  // }
+  //
+  // function handleReset() {
+  //   reset();
+  //   document.documentElement.style.scrollBehavior = "auto";
+  //   window.scrollTo(0, 0);
+  // }
+  //
+  // useEffect(() => {
+  //   const html = document.documentElement;
+  //
+  //   if (isChatting) {
+  //     window.scrollTo(0, 0);
+  //     html.style.overflow = "hidden";
+  //     html.style.scrollBehavior = "auto";
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     html.style.overflow = "";
+  //     html.style.scrollBehavior = "";
+  //     document.body.style.overflow = "";
+  //   }
+  //
+  //   return () => {
+  //     html.style.overflow = "";
+  //     html.style.scrollBehavior = "";
+  //     document.body.style.overflow = "";
+  //   };
+  // }, [isChatting]);
 
   return (
-    <div className={isChatting ? "h-screen overflow-hidden" : ""}>
-      <GsapRefresh tick={isChatting} />
-      <SiteHeader isChatting={isChatting} onReset={handleReset} />
+    <div>
+      <GsapRefresh tick={false} />
+      <SiteHeader isChatting={false} />
 
+      {/* AI conversation overlay — temporarily disabled; restore this block later.
       {isChatting ? (
         <section className="relative flex h-screen flex-col overflow-hidden bg-background pt-16">
           <div className="flex-1 overflow-y-auto pb-36">
@@ -68,9 +70,11 @@ function HomePage() {
           </div>
         </section>
       ) : (
+      */}
         <>
           <div className="relative">
-            <HeroClone />
+            <Hero />
+            {/*
             <div className="absolute bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background via-background/95 to-transparent pb-4 pt-8">
               <Footer
                 query={query}
@@ -79,10 +83,11 @@ function HomePage() {
                 loading={loading}
               />
             </div>
+            */}
           </div>
           <PortfolioSections />
         </>
-      )}
+      {/* )} */}
     </div>
   );
 }

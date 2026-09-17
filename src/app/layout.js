@@ -18,7 +18,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata = {
   title: "Usman Ali | Full-Stack Developer",
   description:
-    "Full-stack developer specializing in Next.js, React, Node.js, and production systems. Software that holds up when your business depends on it.",
+    "Full-stack software engineer who builds, improves and fixes web applications — from idea to production, or from an existing codebase to a better product.",
   icons: {
     icon: "/avatar.png",
   },
