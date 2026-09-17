@@ -1,23 +1,24 @@
-import localFont from "next/font/local";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SmokyCursor from "@/components/SmookyCursor";
-import SplashCursor from "@/components/SplashCursor";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-hanken",
+  display: "swap",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export const metadata = {
   title: "Usman Ali | Full-Stack Developer",
   description:
-    "Explore the portfolio of Usman Ali, a skilled Full-Stack Developer specializing in Next.js, React, Node.js, and MongoDB. Showcasing innovative web applications, scalable solutions, and modern UI/UX design.",
+    "Full-stack developer specializing in Next.js, React, Node.js, and production systems. Software that holds up when your business depends on it.",
   icons: {
     icon: "/avatar.png",
   },
@@ -25,11 +26,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-      <SplashCursor/>
+    <html
+      lang="en"
+      className={`${hanken.variable} ${jetbrains.variable} scroll-smooth antialiased`}
+    >
+      <body className="min-h-full bg-background font-sans text-on-background">
+        <div
+          aria-hidden
+          className="pointer-events-none fixed top-[-20%] left-[-10%] -z-10 h-[50vw] w-[50vw] rounded-full bg-secondary-container/20 blur-[120px]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none fixed right-[-10%] bottom-[-20%] -z-10 h-[60vw] w-[60vw] rounded-full bg-primary-fixed/20 blur-[150px]"
+        />
+        <div
+          aria-hidden
+          className="bg-grid-pattern pointer-events-none fixed inset-0 -z-10 opacity-50"
+        />
         {children}
       </body>
     </html>

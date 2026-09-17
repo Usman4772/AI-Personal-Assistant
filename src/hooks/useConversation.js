@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { apiUrl } from "@/lib/utils";
 
 export default function useConversation() {
   const [query, setQuery] = useState(null);
@@ -20,6 +21,7 @@ export default function useConversation() {
   const [loading, setLoading] = useState(false);
 
   function reset() {
+    setQuery(null);
     setMessage({
       type: "user",
       message: null,
@@ -43,7 +45,7 @@ export default function useConversation() {
         message: query,
       });
       const response = await axios.post(
-        `${process?.env?.NEXT_PUBLIC_BASE_URL}/conversation`,
+        apiUrl("conversation"),
         { query }
       );
       if (response?.data?.success) {

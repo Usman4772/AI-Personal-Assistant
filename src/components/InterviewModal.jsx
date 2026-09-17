@@ -12,6 +12,7 @@ import {
 import dayjs from "dayjs";
 import axios from "axios";
 import { useState } from "react";
+import { apiUrl } from "@/lib/utils";
 
 function InterviewModal({ openModal, setOpenModal }) {
   const [form] = Form.useForm();
@@ -62,7 +63,7 @@ function InterviewModal({ openModal, setOpenModal }) {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/schedule-interview`,
+        apiUrl("schedule-interview"),
         {
           name,
           email,

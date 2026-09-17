@@ -5,71 +5,60 @@ import {
   Layers,
   Handshake,
   GraduationCap,
-  Smile,
   TrendingUp,
 } from "lucide-react";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 function QuickQuestions({ setQuery, getAIResponse }) {
   const questions = [
     {
       icon: User,
       text: "Me",
-      color: "text-teal-600",
       prompt: "Tell me about Usman Ali in a short introduction.",
     },
     {
       icon: Briefcase,
       text: "Projects",
-      color: "text-green-600",
       prompt: "Show me Usman Ali's projects.",
     },
     {
       icon: Layers,
       text: "Skills",
-      color: "text-purple-600",
       prompt: "List Usman Ali's technical skills.",
     },
     {
       icon: Handshake,
       text: "Contact",
-      color: "text-orange-600",
       prompt: "Give me Usman Ali's contact information.",
     },
     {
-      icon: GraduationCap, // replace with your education icon
+      icon: GraduationCap,
       text: "Education",
-      color: "text-blue-600",
       prompt: "Tell me about Usman Ali's education.",
     },
     {
       icon: TrendingUp,
       text: "Experience",
-      color: "text-gray-600",
       prompt: "Tell me something about Usman Ali's career journey.",
     },
   ];
-  const handleClick = (prompt) => {
-    setQuery(prompt);
-    getAIResponse(prompt);
-  };
 
   return (
     <div className="flex justify-center py-2">
-      <div className="flex flex-wrap gap-3 justify-center w-full md:max-w-4xl">
-        {questions.map((question, index) => {
+      <div className="flex w-full max-w-3xl flex-wrap justify-center gap-2 px-3">
+        {questions.map((question) => {
           const IconComponent = question.icon;
           return (
             <button
-              key={index}
-              onClick={() => handleClick(question?.prompt)}
-              className="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-2xl hover:border-gray-300 hover:shadow-sm transition-all duration-200 hover:scale-105 active:scale-95"
+              key={question.text}
+              type="button"
+              onClick={() => {
+                setQuery(question.prompt);
+                getAIResponse(question.prompt);
+              }}
+              className="inline-flex items-center gap-2 rounded-xl border border-outline-variant/40 bg-white/90 px-3.5 py-2 text-sm font-medium text-on-surface shadow-sm backdrop-blur-md transition hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-[0_8px_20px_rgba(0,62,199,0.1)]"
             >
-              <IconComponent className={`w-5 h-5 ${question.color}`} />
-              {question.text && (
-                <span className="text-gray-700 font-medium text-sm">
-                  {question.text}
-                </span>
-              )}
+              <IconComponent className="h-4 w-4 text-primary" />
+              {question.text}
             </button>
           );
         })}

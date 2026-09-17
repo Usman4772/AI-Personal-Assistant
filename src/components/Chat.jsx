@@ -16,7 +16,7 @@ function Chat({ message, flags, loading }) {
       <div className="flex flex-col w-full">
         <div className=" w-full flex justify-end mb-4 animate-slideUp">
           <div className="max-w-[80%] md:max-w-[60%]">
-            <div className="px-4 py-3 rounded-2xl rounded-br-md bg-blue-500 text-white shadow-sm">
+            <div className="px-4 py-3 rounded-2xl rounded-br-md bg-primary-container text-white shadow-[0_8px_20px_rgba(0,82,255,0.22)]">
               <div className="text-sm md:text-base leading-relaxed break-words whitespace-pre-wrap">
                 {message?.message}
               </div>
@@ -29,7 +29,7 @@ function Chat({ message, flags, loading }) {
               speedMultiplier={1}
               size={5}
               loading={loading}
-              color="#17313E"
+              color="#0052ff"
             />
           </div>
         )}

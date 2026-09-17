@@ -103,7 +103,11 @@ const Journey = () => {
             const Icon = item.icon;
 
             return (
-              <div key={item.id} className="relative">
+              <div
+                key={item.id}
+                id={item.type === "education" ? "education" : undefined}
+                className="relative"
+              >
                 <div className="absolute left-4 flex items-center justify-center">
                   <div
                     className={`w-4 h-4 rounded-full bg-white border-2 ${colorClasses.border} z-10`}

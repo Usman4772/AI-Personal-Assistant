@@ -1,67 +1,88 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
-    content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    theme: {
-        extend: {
-            colors: {
-                background: 'hsl(var(--background))',
-                foreground: 'hsl(var(--foreground))',
-                'custom-gray': '#697D95',
-                'custom-black': '#353535',
-                "primary-black":"#08090A",
-                "secondary-green":"#18E299",
-                "secondary-grey":"#aad2ba",
-                "secondary-white":"#ffffff",
-                card: {
-                    DEFAULT: 'hsl(var(--card))',
-                    foreground: 'hsl(var(--card-foreground))'
-                },
-                popover: {
-                    DEFAULT: 'hsl(var(--popover))',
-                    foreground: 'hsl(var(--popover-foreground))'
-                },
-                primary: {
-                    DEFAULT: 'hsl(var(--primary))',
-                    foreground: 'hsl(var(--primary-foreground))'
-                },
-                secondary: {
-                    DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))'
-                },
-                muted: {
-                    DEFAULT: 'hsl(var(--muted))',
-                    foreground: 'hsl(var(--muted-foreground))'
-                },
-                accent: {
-                    DEFAULT: 'hsl(var(--accent))',
-                    foreground: 'hsl(var(--accent-foreground))'
-                },
-                destructive: {
-                    DEFAULT: 'hsl(var(--destructive))',
-                    foreground: 'hsl(var(--destructive-foreground))'
-                },
-                border: 'hsl(var(--border))',
-                input: 'hsl(var(--input))',
-                ring: 'hsl(var(--ring))',
-                chart: {
-                    '1': 'hsl(var(--chart-1))',
-                    '2': 'hsl(var(--chart-2))',
-                    '3': 'hsl(var(--chart-3))',
-                    '4': 'hsl(var(--chart-4))',
-                    '5': 'hsl(var(--chart-5))'
-                }
-            },
-            borderRadius: {
-                lg: 'var(--radius)',
-                md: 'calc(var(--radius) - 2px)',
-                sm: 'calc(var(--radius) - 4px)'
-            }
-        }
+  darkMode: ["class"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-hanken)", "sans-serif"],
+        display: ["var(--font-hanken)", "sans-serif"],
+        mono: ["var(--font-jetbrains)", "monospace"],
+      },
+      colors: {
+        ink: "#191c1e",
+        cyan: "#00eefc",
+        amber: "#ffa23e",
+        background: "#f7f9fb",
+        foreground: "#191c1e",
+        "on-background": "#191c1e",
+        "on-primary": "#ffffff",
+        on: {
+          primary: "#ffffff",
+          background: "#191c1e",
+          surface: {
+            DEFAULT: "#191c1e",
+            variant: "#434656",
+          },
+        },
+        primary: {
+          DEFAULT: "#003ec7",
+          container: "#0052ff",
+          fixed: "#dde1ff",
+        },
+        secondary: {
+          DEFAULT: "#006970",
+          container: "#00eefc",
+          foreground: "#ffffff",
+        },
+        surface: {
+          DEFAULT: "#f7f9fb",
+          dim: "#d8dadc",
+          elevated: "#ffffff",
+          container: {
+            DEFAULT: "#eceef0",
+            low: "#f2f4f6",
+            lowest: "#ffffff",
+          },
+        },
+        outline: {
+          DEFAULT: "#737688",
+          variant: "#c3c5d9",
+        },
+        muted: {
+          DEFAULT: "#737688",
+          foreground: "#434656",
+        },
+        accent: {
+          DEFAULT: "#0052ff",
+          hover: "#003ec7",
+        },
+        border: "#e0e3e5",
+        input: "#e0e3e5",
+        ring: "#0052ff",
+        destructive: {
+          DEFAULT: "#dc2626",
+          foreground: "#ffffff",
+        },
+        card: {
+          DEFAULT: "#ffffff",
+          foreground: "#191c1e",
+        },
+        popover: {
+          DEFAULT: "#ffffff",
+          foreground: "#191c1e",
+        },
+      },
+      borderRadius: {
+        lg: "20px",
+        md: "14px",
+        sm: "10px",
+      },
     },
-    plugins: [require("tailwindcss-animate")],
+  },
+  plugins: [require("tailwindcss-animate")],
 };
